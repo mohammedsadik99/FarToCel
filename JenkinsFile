@@ -14,13 +14,13 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'maven3 clean install'
+                sh 'maven clean install'
             }
         }
         
         stage('Test') {
             steps {
-                sh 'maven3 test'
+                sh 'maven test'
             }
             post {
                 success {
