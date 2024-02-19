@@ -1,34 +1,36 @@
 pipeline {
     agent any
-
-    tools {
-            maven 'maven3'
-            jdk 'jdk'
-        }
-
+    
+    environment {
+        GITHUB_REPO = 'https://github.com/mohammedsadik99/FarToCel'
+    }
+    
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: "https://github.com/mohammedsadik99/FarToCel"
+            }
+        }
+        
         stage('Build') {
             steps {
-                echo 'Building...'
                 sh 'mvn clean install'
             }
         }
+        
         stage('Test') {
             steps {
-                echo 'Testing...'
                 sh 'mvn test'
             }
-        }
-    }
-    post {
-        always {
-            echo 'This will always run'
-        }
-        success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
+            post {
+                success {
+                    // Publish JUnit test results
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    
+                    // Generate JaCoCo code coverage report
+                    jacoco(execPattern: '**/target/jacoco.exec')
+                }
+            }
         }
     }
 }
