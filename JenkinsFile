@@ -1,13 +1,34 @@
 pipeline {
     agent any
-    environment {
-        GITHUB_REPO = 'https://github.com/mohammedsadik99/FarToCel'
-    }
+
+    tools {
+            maven 'Maven'
+            jdk 'JDK'
+        }
+
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git branch: 'main', url:https//github.com/mohammedsadik99/FarToCel
+                echo 'Building...'
+                sh 'mvn clean install'
             }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh 'mvn test'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'This will always run'
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
         }
     }
 }
