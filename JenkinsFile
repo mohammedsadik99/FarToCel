@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    environment {
+        GITHUB_REPO = 'https://github.com/mohammedsadik99/FarToCel'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url:https://github.com/mohammedsadik99/FarToCel
+            }
+        }
+    }
+}
