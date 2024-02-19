@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        GITHUB_API_URL = 'https://github.com/mohammedsadik99.com/api/v3'
         GITHUB_REPO = 'https://github.com/mohammedsadik99/FarToCel'
     }
     stages {
