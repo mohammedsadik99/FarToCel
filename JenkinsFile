@@ -5,6 +5,11 @@ pipeline {
         GITHUB_REPO = 'https://github.com/mohammedsadik99/FarToCel'
     }
     
+    tools {
+        maven 'maven3'
+        jdk 'jdk'
+    }
+    
     stages {
         stage('Checkout') {
             steps {
