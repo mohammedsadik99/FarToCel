@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'mohammedsadik99/TemperatureConverter'
+        IMAGE_NAME = 'mohammedsadik99/temperatureConverter'
         TAG = 'latest'
 
     }
