@@ -17,12 +17,23 @@
     <url>https://github.com/mohammedsadik99/FarToCel</url>
 
     <build>
+        <finalName>interconversions</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.5.0</version>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
+
+            <!-- Other plugins... -->
 
             <plugin>
                 <groupId>org.jacoco</groupId>

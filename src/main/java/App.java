@@ -1,4 +1,4 @@
-public class TemperatureConverterMain {
+public class App {
     public static void main(String[] args) {
         float kelvinTemp = 300.1f;
         float celsiusTemp = TemperatureConverter.kelvinToCel(kelvinTemp);
